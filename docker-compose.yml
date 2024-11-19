@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  react-app:
+    build: .
+    ports:
+      - "80:80"  # Có thể thay đổi cổng nếu cần, ví dụ "3000:80"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - react-net
+    volumes:
+      - .:/app  # Đảm bảo chia sẻ mã nguồn giữa máy chủ và container
+
+networks:
+  react-net:
+    driver: bridge
